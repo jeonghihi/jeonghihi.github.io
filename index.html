@@ -1,245 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Blog – Wikipedia Style</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/components.css" />
+<head>
+<meta charset="UTF-8">
+<title>Jay:Projects</title>
+<style>
+    body {
+    margin: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .footer {
+    margin-top: auto;
+    padding: 10px;
+    color: #666;
+    text-align: left;
+    }
+</style>
 </head>
+    
 <body>
 
-  <!--
-    ══════════════════════════════════════════════════════
-    PURE CSS TECHNIQUES USED:
-      1. Sidenav   — hidden <input type="checkbox"> +
-                     <label> hamburger + CSS sibling selector
-                     (#sidenav-toggle:checked ~ #sidenav)
-      2. Tabs      — <input type="radio"> + <label> tabs +
-                     CSS sibling selector to show/hide panes
-      3. Tags /    — native <details> + <summary> elements,
-         Contents    no JS needed
-    ══════════════════════════════════════════════════════
-  -->
-
-  <!-- ① Sidenav checkbox — must be BEFORE sidenav and overlay in DOM -->
-  <input type="checkbox" id="sidenav-toggle" />
-
-  <!-- ② Tab radios — must be BEFORE the tab bar and panes in DOM -->
-  <input type="radio" class="tab-radio" name="tabs" id="tab-post"     checked />
-  <input type="radio" class="tab-radio" name="tabs" id="tab-comments" />
-
-  <!-- ═══ OVERLAY (mobile) ═══ -->
-  <!--
-    Clicking the overlay should close the sidenav.
-    Pure CSS trick: wrap the overlay in a <label for="sidenav-toggle">
-    so clicking it unchecks the checkbox.
-  -->
-  <label class="sidenav-overlay" for="sidenav-toggle" aria-hidden="true"></label>
-
-  <!-- ═══ SIDENAV ═══ -->
-  <nav id="sidenav" role="navigation" aria-label="Site navigation">
-    <a class="sidenav-brand" href="index.html">MyBlog</a>
-    <ul class="sidenav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#posts">All Posts</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#tags">Tags</a></li>
-      <li><a href="#contact">Contact</a></li>
+  <h2>Hello</h2>
+  <p>I'm Jay.<br>
+  I mostly work with computers during the day, <br>
+  and do other things the rest of the time.</p>
+  <details>
+    <summary>sometimes playing drums..</summary>
+    <ul>
+      <li><a href="https://aigo.ooo">aigo</a></li>
+      <li><a href="https://music.youtube.com/channel/UCb578089z0XhCN4BDd6Jucg">aisle of winter</li>
+      <li><a href="https://geistae.bandcamp.com/album/geistae">geistæ</a></li>
+      <li><a href="https://music.youtube.com/channel/UCvOaAwv-PbuHYT44I-osDNA">st.peachbitches</a></li>
     </ul>
-    <div class="sidenav-section">Tools</div>
-    <ul class="sidenav-menu">
-      <li><a href="#!">RSS Feed</a></li>
-      <li><a href="#!">Archive</a></li>
+  </details>
+
+  <details>
+    <summary>sometimes writing..</summary>
+    <ul>
+      <li>in human language (tbu)</li>
+      <li>in computer language (tbu)</li>
     </ul>
-    <div class="sidenav-new-post">
-      <a href="#!"><i class="fas fa-pencil-alt fa-xs"></i> New Post</a>
-    </div>
-  </nav>
+  </details>
 
-  <!-- ═══ NAVBAR ═══ -->
-  <header id="main-navbar">
+  <p></p>
 
-    <!-- Hamburger: label toggles the sidenav checkbox -->
-    <label class="hamburger" for="sidenav-toggle" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </label>
-
-    <nav id="top-page-nav" aria-label="Page sections">
-      <a href="index.html">Home</a>
-      <a href="#about">About</a>
-      <a href="#posts">Posts</a>
-      <a href="#projects">Projects</a>
-      <a href="#tags">Tags</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="navbar-right">
-      <a href="#"><i class="fas fa-user fa-xs"></i> My Profile</a>
-      <a href="https://github.com/myname" rel="noopener noreferrer" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/myname" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-    </div>
-
-  </header>
-
-  <!-- ═══ MAIN ═══ -->
-  <main>
-
-    <!-- Tab bar -->
-    <div class="wiki-tabs-row">
-      <div class="tab-group">
-        <!-- Labels for the radio inputs above -->
-        <label class="tab-label" for="tab-post">Post</label>
-        <label class="tab-label" for="tab-comments">Comments</label>
-      </div>
-      <div class="tab-right-group">
-        <a class="tab-label-static active" href="#">Read</a>
-        <a class="tab-label-static" href="#">Edit</a>
-        <a class="tab-label-static" href="#">History</a>
-        <form class="wiki-search" onsubmit="return false;">
-          <input autocomplete="off" type="search" placeholder="Search blog" aria-label="Search blog" />
-          <button type="submit" aria-label="Search"><i class="fas fa-search fa-xs"></i></button>
-        </form>
-      </div>
-    </div>
-
-    <!-- ── Post pane ── -->
-    <div class="tab-pane" id="pane-post">
-
-      <h1>About This Blog</h1>
-      <hr class="wiki-hr" />
-      <p class="psmall" style="margin:0 0 4px;">From the desk of [Your Name]</p>
-
-      <div class="note-box">
-        A personal space for writing about
-        <a href="#tags">technology</a>,
-        <a href="#tags">design</a>, and
-        <a href="#tags">life in general</a>.
-      </div>
-
-      <p>
-        Welcome to my personal blog. I write about things I find interesting, things I'm learning,
-        and occasional thoughts on design and technology. Feel free to browse around.
-      </p>
-
-      <!-- Contents — native <details> toggle, no JS -->
-      <div class="contents-box">
-        <details open>
-          <summary>Contents</summary>
-          <ol>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#posts">Recent Posts</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#tags">Tags</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ol>
-        </details>
-      </div>
-
-      <!-- About -->
-      <div class="section-head" id="about">
-        <h3>About Me</h3>
-        <span class="edit-link">[<a href="#!">edit</a>]</span>
-      </div>
-      <hr class="wiki-hr" />
-      <p>
-        I'm a [your profession] based in [your city]. I'm interested in [your interests].
-        This blog is where I share notes, essays, and projects as I go.
-      </p>
-
-      <!-- Recent Posts -->
-      <div class="section-head" id="posts">
-        <h3>Recent Posts</h3>
-        <span class="edit-link">[<a href="#!">edit</a>]</span>
-      </div>
-      <hr class="wiki-hr" />
-      <ul class="post-list">
-        <li><a href="#!">My First Post – An Introduction</a> <span class="psmall text-muted">– April 2024</span></li>
-        <li><a href="#!">What I've Been Building Lately</a> <span class="psmall text-muted">– March 2024</span></li>
-        <li><a href="#!">Notes on Learning in Public</a> <span class="psmall text-muted">– February 2024</span></li>
-      </ul>
-
-      <!-- Projects -->
-      <div class="section-head" id="projects">
-        <h3>Projects</h3>
-        <span class="edit-link">[<a href="#!">edit</a>]</span>
-      </div>
-      <hr class="wiki-hr" />
-      <ul class="post-list">
-        <li><a href="#!" rel="noopener noreferrer">Project One</a> – A short description of what this project does.</li>
-        <li><a href="#!" rel="noopener noreferrer">Project Two</a> – Another project with a brief description.</li>
-      </ul>
-
-      <!-- Tags — native <details> toggle, no JS -->
-      <div class="section-head" id="tags">
-        <h3>Tags</h3>
-      </div>
-      <hr class="wiki-hr" />
-      <details class="tags-toggle" open>
-        <summary>Tags</summary>
-        <div class="tag-list">
-          <a href="#!">technology</a>
-          <a href="#!">design</a>
-          <a href="#!">personal</a>
-          <a href="#!">projects</a>
-          <a href="#!">travel</a>
-          <a href="#!">learning</a>
-          <a href="#!">writing</a>
-          <a href="#!">open-source</a>
-          <a href="#!">productivity</a>
-          <a href="#!">tools</a>
-        </div>
-      </details>
-
-      <!-- Contact -->
-      <div class="section-head" id="contact">
-        <h3>Contact</h3>
-        <span class="edit-link">[<a href="#!">edit</a>]</span>
-      </div>
-      <hr class="wiki-hr" />
-      <p>
-        You can reach me by <a href="mailto:you@example.com">email</a> or find me on
-        <a href="https://github.com/myname" rel="noopener noreferrer" target="_blank">GitHub</a> and
-        <a href="https://linkedin.com/in/myname" rel="noopener noreferrer" target="_blank">LinkedIn</a>.
-      </p>
-
-      <!-- Footer tag cloud -->
-      <div class="footer-tags">
-        <span class="psmall"><a href="#tags">Tags</a>: </span>
-        <a href="#!">technology</a>
-        <a href="#!">design</a>
-        <a href="#!">personal</a>
-        <a href="#!">projects</a>
-        <a href="#!">travel</a>
-        <a href="#!">learning</a>
-        <a href="#!">writing</a>
-        <a href="#!">open-source</a>
-      </div>
-
-    </div><!-- /pane-post -->
-
-    <!-- ── Comments pane ── -->
-    <div class="tab-pane" id="pane-comments">
-      <p class="text-muted" style="margin-top:16px;">No comments yet.</p>
-    </div>
-
-  </main>
-
-  <!-- ═══ FOOTER ═══ -->
-  <footer>
-    <p style="margin:0 0 4px;">Content on this blog is my own unless otherwise noted.</p>
-    <p style="margin:0;">
-      <a href="#!">Privacy Policy</a> ·
-      <a href="#about">About</a> ·
-      <a href="#contact">Contact</a>
+  <div class="footer" >
+    <p>
+        contact: fornowimigu[at]gmail<br>
+        updated: 29.04.2026 · Berlin<br>
     </p>
-  </footer>
-
-  <!-- Zero JavaScript -->
+  </div>
 
 </body>
 </html>
