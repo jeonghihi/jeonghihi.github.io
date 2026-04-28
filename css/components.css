@@ -1,0 +1,191 @@
+/* ─────────────────────────────────────────
+   components.css — tabs (radio-driven),
+   details/summary toggles, tags, search,
+   contents box, section heads
+   ───────────────────────────────────────── */
+
+/* ════════════════════════════════════════
+   TABS — driven by <input type="radio">
+   ════════════════════════════════════════ */
+
+/* Hide all radio inputs */
+.tab-radio { display: none; }
+
+/* Tab bar */
+.wiki-tabs-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid #dee2e6;
+  margin: 12px 0 0;
+}
+
+.tab-group,
+.tab-right-group { display: flex; align-items: flex-end; }
+
+/* Tab labels act as the clickable tabs */
+.tab-label {
+  display: inline-block;
+  padding: 5px 14px;
+  font-size: 0.86rem;
+  color: #1266f1;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  background: none;
+  position: relative;
+  bottom: -1px;
+  user-select: none;
+}
+.tab-label:hover { background: #eaecf0; }
+
+/* Active tab: highlight when its radio is checked */
+#tab-post:checked     ~ .wiki-tabs-row .tab-label[for="tab-post"],
+#tab-comments:checked ~ .wiki-tabs-row .tab-label[for="tab-comments"] {
+  background: #fff;
+  border-color: #dee2e6;
+  color: #202122;
+  font-weight: 500;
+}
+
+/* Non-switchable right-side labels (Read / Edit / History) */
+.tab-label-static {
+  display: inline-block;
+  padding: 5px 14px;
+  font-size: 0.86rem;
+  color: #1266f1;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  bottom: -1px;
+}
+.tab-label-static:hover { background: #eaecf0; text-decoration: none; }
+.tab-label-static.active {
+  background: #fff;
+  border-color: #dee2e6;
+  color: #202122;
+  font-weight: 500;
+}
+
+/* Tab panes — all hidden by default */
+.tab-pane { display: none; padding: 16px 0; }
+
+/* Show the correct pane when its radio is checked */
+#tab-post:checked     ~ main #pane-post,
+#tab-comments:checked ~ main #pane-comments {
+  display: block;
+}
+
+/* ── Search ── */
+.wiki-search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #a2a9b1;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-left: 10px;
+}
+.wiki-search input {
+  border: none;
+  outline: none;
+  padding: 3px 8px;
+  font-size: 0.84rem;
+  width: 180px;
+}
+.wiki-search button {
+  background: #f8f9fa;
+  border: none;
+  border-left: 1px solid #a2a9b1;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #54595d;
+}
+.wiki-search button:hover { background: #eaecf0; }
+
+/* ════════════════════════════════════════
+   DETAILS / SUMMARY — native toggle
+   ════════════════════════════════════════ */
+
+/* Contents box */
+.contents-box {
+  display: inline-block;
+  border: 1px solid #a2a9b1;
+  background: #f8f9fa;
+  font-size: 0.88rem;
+  margin: 12px 0 16px;
+  min-width: 140px;
+}
+
+.contents-box > details { padding: 8px 14px 10px; }
+
+.contents-box summary {
+  cursor: pointer;
+  list-style: none;       /* remove default triangle */
+  margin-bottom: 4px;
+  font-size: 0.88rem;
+}
+.contents-box summary::-webkit-details-marker { display: none; }
+
+/* "Contents [hide]" / "Contents [show]" label swap */
+.contents-box summary::after        { content: ' [show]'; color: #1a0dab; }
+details[open] > summary::after      { content: ' [hide]'; color: #1a0dab; }
+
+.contents-box ol { margin: 4px 0 0 16px; padding: 0; }
+.contents-box li { margin: 2px 0; }
+
+/* Tags toggle */
+.tags-toggle {
+  margin-top: 8px;
+}
+.tags-toggle > summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.82rem;
+  color: #54595d;
+  display: inline;
+}
+.tags-toggle > summary::-webkit-details-marker { display: none; }
+.tags-toggle > summary::after       { content: ' [show]'; color: #1a0dab; font-size: 0.82rem; }
+details[open].tags-toggle > summary::after { content: ' [hide]'; color: #1a0dab; }
+
+/* ── Tag pills ── */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.tag-list a,
+.footer-tags a {
+  background: #eaf0fb;
+  border: 1px solid #c8d8f8;
+  border-radius: 3px;
+  color: #1266f1;
+  font-size: 0.82rem;
+  padding: 2px 9px;
+  text-decoration: none;
+}
+.tag-list a:hover,
+.footer-tags a:hover { background: #d0e1ff; }
+
+/* ── Footer tag cloud ── */
+.footer-tags {
+  border: 1px solid #dee2e6;
+  padding: 8px 12px;
+  margin: 18px 0 32px;
+  font-size: 0.86rem;
+}
+.footer-tags a {
+  display: inline-block;
+  margin: 2px;
+}
+
+/* ── Section headings ── */
+.section-head { margin: 22px 0 0; }
+.section-head .edit-link {
+  font-size: 0.82rem;
+  color: #54595d;
+  margin-left: 6px;
+}
